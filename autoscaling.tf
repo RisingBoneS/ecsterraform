@@ -1,5 +1,5 @@
 resource "aws_launch_configuration" "ecs_launch_config" {
-  image_id             = "ami-032930428bf1abbff"
+  image_id             = "ami-0d9feb0e9cd3526e4"
   iam_instance_profile = aws_iam_instance_profile.ecs_agent.name
   security_groups      = [aws_security_group.ecs_sg.id]
   user_data            = "#!/bin/bash\necho ECS_CLUSTER=my-cluster >> /etc/ecs/ecs.config"
@@ -11,9 +11,9 @@ resource "aws_autoscaling_group" "failure_analysis_ecs_asg" {
   vpc_zone_identifier  = [aws_subnet.pub_subnet.id]
   launch_configuration = aws_launch_configuration.ecs_launch_config.name
 
-  desired_capacity          = 2
+  desired_capacity          = 1
   min_size                  = 1
-  max_size                  = 10
+  max_size                  = 2
   health_check_grace_period = 300
   health_check_type         = "EC2"
 }

@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "terraformbuckets3okito"
+    bucket = "terraformbuckets3express"
     key    = "terraform.tfstate"
-    region = "us-east-1"
+    region = "eu-west-2"
   }
 }
